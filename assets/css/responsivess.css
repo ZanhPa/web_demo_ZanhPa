@@ -1,11 +1,55 @@
 /* PC */
-@media  (min-width:1023){
-    
+@media  (min-width: 1024px){
+    #footer .social-list a {
+        margin: 5px 16px;
+        display: inline-block;
+    }
+    #footer .copyright {
+        font-size: 28px;
+    }
+    #footer .social-list {
+        font-size: 28px;
+        padding: 5px 0;
+    }
 }
+
+@media  (max-width: 1023px){
+    #content .place-btn {
+        padding: 15px 16px;
+        width: 100%;
+    }
+    #nav .subnav a {
+        padding: 5px 12px;
+    }
+    #content .contract-form .from-control {
+        padding: 15px;
+    }
+    #content .contract-form .form-btn{
+        width: 100%;
+    }
+    #footer .social-list {
+        font-size: 48px;
+    }
+    #footer .social-list a {
+        margin: 0 8px;
+    }
+    #footer .copyright{
+        font-size: 28px;
+    }
+    #footer .copyright a {
+        padding: 12px 0;
+        display: inline-block;
+    }
+    #content .contract-info {
+        line-height: 2;
+    }
+}
+
 /* Tablet */
-@media (min-width: 740px) and (max-width:1023){
+@media (min-width: 740px) and (max-width: 1023px){
     
 }
+
 /* Mobile */
 @media (max-width: 739px){
     .s-full-width {
@@ -50,6 +94,13 @@
         width: 60%;
     }
     #contact-form {
-        margin-top: 16px;
+        margin-top: 32px;
+    }
+    #footer .social-list {
+        font-size: 28px;
+    }
+    #footer .copyright a {
+        padding: 12px 0;
+        display: inline-block;
     }
 }
