@@ -33,6 +33,9 @@
             <div class="search-btn">
                 <i class="search-icon ti-search"></i>
             </div>
+            <div class="mobile-menu-btn" id="mobile-menu">
+                <i class="menu-icon ti-menu "></i>
+            </div>
         <!-- end search -->
         </div>
         <!-- end nav -->
@@ -55,17 +58,17 @@
 
                 </p>
                 <div class="member-list row">
-                    <div class="col col-3cot text-center">
+                    <div class="s-cot-full mt-32 col col-3cot text-center">
                         <p class="member-name">Xuan</p>
                         <img src="./assets/img/bandmember.jpg" alt="Xuan" class="member-img">
                     </div>
 
-                    <div class="col col-3cot text-center">
+                    <div class="s-cot-full mt-32 col col-3cot text-center">
                         <p class="member-name">Xuan</p>
                         <img src="./assets/img/bandmember.jpg" alt="Xuan" class="member-img">
                     </div>
 
-                    <div class="col col-3cot text-center">
+                    <div class="s-cot-full mt-32 col col-3cot text-center">
                         <p class="member-name">Xuan</p>
                         <img src="./assets/img/bandmember.jpg" alt="Xuan" class="member-img">
                     </div>
@@ -88,33 +91,33 @@
 
                     <!-- place -->
                     <div class="place-list row ">
-                        <div class="col-3cot col">
+                        <div class="col-3cot col s-cot-full mt-32">
                             <img src="./assets/img/paris.jpg" alt="New York" class="place-img">
                             <div class="place-body">
                                 <h3 class="place-heading">New York</h3>
                                 <p class="place-time">Fri 26 2022</p>
                                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo</p>
-                                <button class="place-btn s-full-width js-buy-ticket">Buy Tickets</button>
-                            </div>
+                                <button class="place-btn s-full-width s-full-width js-buy-ticket">Buy Tickets</button>
+                            </div>  
                         </div>
 
-                        <div class="col-3cot col">
+                        <div class="col-3cot col s-cot-full mt-32">
                             <img src="./assets/img/paris.jpg" alt="New York" class="place-img">
                             <div class="place-body">
                                 <h3 class="place-heading">Paris</h3>
                                 <p class="place-time">Sat 28 Nov 2022</p>
                                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo</p>
-                                <button class="place-btn s-full-width js-buy-ticket">Buy Tickets</button>
+                                <button class="place-btn s-full-width s-full-width js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
 
-                        <div class="col-3cot col">
+                        <div class="col-3cot col s-cot-full mt-32">
                             <img src="./assets/img/paris.jpg" alt="New York" class="place-img">
                             <div class="place-body">
                                 <h3 class="place-heading">San Francisco</h3>
                                 <p class="place-time">Sun 29 Nov 2023</p>
                                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo</p>
-                                <button class="place-btn s-full-width js-buy-ticket">Buy Tickets</button>
+                                <button class="place-btn s-full-width s-full-width js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -129,29 +132,29 @@
                 <p class="section-sub-heading">Fan? Drop a note!</p>
 
                 <div class="contract-content row">
-                    <div class="col col-2cot contract-info">
+                    <div class="col col-2cot s-cot-full contract-info">
                         <p><i class="ti-location-pin"></i>Chicago, US</p>
                         <p><i class="ti-mobile"></i>Phone: +00 151515</p>
                         <p><i class="ti-email"></i>Email: mail@mail.com</p>
                     </div>
 
-                    <div class="col col-2cot contract-form">
+                    <div class="col col-2cot s-cot-full contract-form">
                         <form action="">
                             <div class="row">
-                                <div class="col col-2cot">
+                                <div class="col col-2cot s-cot-full">
                                     <input type="text" name="" placeholder="Name" required id="" class="from-control">
                                 </div>
-                                <div class="col col-2cot">
+                                <div class="col col-2cot s-cot-full s-mt-8">
                                     <input type="email" name="" placeholder="Email" required id="" class="from-control">
                                 </div>
                                
                             </div>
                             <div class="row mt-8">
-                                <div class="col col-1cot">
+                                <div class="col col-1cot ">
                                     <input type="text" name="" placeholder="Message" required id="" class="from-control">
                                 </div>
                             </div>
-                            <input class="form-btn mt-16" type="submit" value="Send">
+                            <input class="form-btn mt-16 s-full-width" type="submit" value="Send">
                         </form>
 
                     </div>
@@ -239,6 +242,40 @@
         modalContainer.addEventListener('click', function(event){
             event.stopPropagation()
         })
+    </script>
+
+    <script>
+        var header = document.getElementById('header');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var headerHeight = header.clientHeight;
+
+        // đóng mở mobile menu
+        mobileMenu.onclick = function() {
+            var isClose = header.clientHeight === headerHeight;
+            if (isClose) {
+                header.style.height = 'auto';
+            } else {
+                header.style.height = null;
+            }
+        }
+
+        // tự động đóng khi chọn 1 phần tử trong menu
+        var menuItems = document.querySelectorAll('#nav li a[href*="#"]')
+        for(var i=0; i < menuItems.length; i++) {
+            var menuItem = menuItems[i];
+
+            menuItem.onclick = function() {
+                // kiểm tra ...
+                var isParentMenu = this.nextElementSibling && this.nextElementSibling.classList.contains('subnav');
+                if (isParentMenu) {
+                    event.preventDefault();
+                } else {
+                    header.style.height = null;
+                }
+               
+            }
+        }
+
     </script>
 </body>
 </html>
